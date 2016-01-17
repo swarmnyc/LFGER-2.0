@@ -12,7 +12,7 @@ import Social
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     var submission: Submission = Submission();
-    var systems: [SystemModel] = [SystemModel(type: System.PC),SystemModel(type: System.PS4),SystemModel(type: System.XBOXONE)];
+    var systems: [SystemModel] = [SystemModel(type: System.PC),SystemModel(type: System.XBOXONE), SystemModel(type: System.PS4)];
     var mainView: MainView = MainView();
     var lfgView: LFGView = LFGView();
     var gamesList: GamesListView = GamesListView();
@@ -65,6 +65,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func submitIt() {
+        
+        if (self.mainView.onTop == false) {
+            return;
+        }
+        
         let systemIndex = self.lfgView.getSystemIndex();
         let system: SystemModel = systems[systemIndex];
         let game = lfgView.getGame();
@@ -96,8 +101,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.gamesList.reloadData();
         self.shareToSocial(sitesToShareOn, callback: {
             
-            
-            self.mainView.setContentOffset(CGPointMake(0, UIScreen.mainScreen().bounds.height), animated: true);
+            self.lfgView.clearData();
+            self.mainView.setContentOffset(CGPointMake(0, UIScreen.mainScreen().bounds.height * 0.85), animated: true);
+            self.mainView.onTop = false;
         });
         
         
@@ -179,9 +185,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if (targetContentOffset.memory.y > UIScreen.mainScreen().bounds.height / 2) {
             targetContentOffset.memory.y = UIScreen.mainScreen().bounds.height
+            self.mainView.onTop = false;
         } else {
             targetContentOffset.memory.y = 0;
+            self.mainView.onTop = true;
         }
+        
         
         
     }

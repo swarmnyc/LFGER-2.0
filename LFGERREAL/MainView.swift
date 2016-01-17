@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+
+
+
+
+
 class MainView: UIScrollView, UIGestureRecognizerDelegate {
     
     var topView: UIView = UIView();
@@ -18,6 +23,7 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
     var goToLFG: UIButton = UIButton();
     var settingsLink: UIButton = UIButton();
     var goToSettings: (() -> ())?
+    var onTop: Bool = true;
     
     func goToSettingsFunc(callback: (() -> ())) {
         self.goToSettings = callback;
@@ -31,7 +37,7 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
         
         self.addSubview(self.topView);
         self.addSubview(self.bottomView);
-        self.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 2);
+        self.contentSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 1.75);
         
         self.addSubview(self.goToGames);
         self.addSubview(self.goToLFG);
@@ -103,13 +109,14 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
             make.bottom.equalTo(self);
             make.left.equalTo(self);
             make.width.equalTo(UIScreen.mainScreen().bounds.width);
-            make.height.equalTo(UIScreen.mainScreen().bounds.height);
+            make.height.equalTo(UIScreen.mainScreen().bounds.height * 0.75);
             make.top.equalTo(self.goToLFG.snp_bottom);
         })
         
+        
         self.grip.snp_remakeConstraints(closure: {
             make in
-            make.centerY.equalTo(self.topView.snp_bottom);
+            make.centerY.equalTo(self.topView.snp_bottom).offset(-1 * UIScreen.mainScreen().bounds.height * 0.065);
             make.centerX.equalTo(self.bottomView.snp_centerX);
             make.width.equalTo(UIScreen.mainScreen().bounds.width * 0.15);
             make.height.equalTo(UIScreen.mainScreen().bounds.height * 0.2);

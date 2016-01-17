@@ -11,17 +11,51 @@ import UIKit
 
 class SystemButton: UIButton {
     var index: Int = 0;
+    var selectedImage: UIImageView = UIImageView(image: UIImage(named: "systemBtnOn")!);
+    var titleText: String = "";
+    func setPosition() {
+        self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center;
+        self.contentVerticalAlignment = UIControlContentVerticalAlignment.Top;
+        
+    }
     
+    func setEmbossedText(text: String, color: UIColor) {
+        self.titleText = text;
+        let attrString = NSMutableAttributedString(string: text);
+        attrString.addAttributes([NSTextEffectAttributeName: NSTextEffectLetterpressStyle,
+            NSForegroundColorAttributeName: color], range: NSRange(location: 0, length: text.characters.count));
+        self.setAttributedTitle(attrString, forState: .Normal);
+    }
+    
+    func setUpView() {
+        if (selectedImage.superview != nil) {
+            return;
+        }
+        self.selectedImage.contentMode = UIViewContentMode.ScaleAspectFit;
+        self.addSubview(self.selectedImage);
+        self.selectedImage.snp_remakeConstraints(closure: {
+            make in
+            make.centerX.equalTo(self.snp_centerX);
+            make.height.equalTo(self.selectedImage.image!.size.height);
+            make.width.equalTo(self.selectedImage.image!.size.width);
+            make.centerY.equalTo(self.snp_centerY).offset(Constants.padding * 4);
+        })
+
+    }
     
     func selectButton() {
-        self.backgroundColor = UIColor.whiteColor();
+        self.backgroundColor = UIColor.clearColor();
+        self.selectedImage.alpha = 1;
+        self.setEmbossedText(self.titleText, color: UIColor(red: 0.678, green: 0.165, blue: 0.090, alpha: 1.00))
         
     }
     
     
     func deselectButton() {
-        self.backgroundColor = UIColor.grayColor();
-        
+        self.backgroundColor = UIColor.clearColor();
+        self.selectedImage.alpha = 0;
+        self.setEmbossedText(self.titleText, color: UIColor(red: 0.408, green: 0.380, blue: 0.380, alpha: 1.00))
+
     }
     
 }

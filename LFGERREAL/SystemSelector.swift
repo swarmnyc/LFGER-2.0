@@ -12,24 +12,26 @@ import UIKit
 
 class SystemSelect: BaseView {
     
-    var title: UILabel = UILabel();
     var systemButtons: [SystemButton] = [];
     var selectedIndex: Int = 0;
+    var background: UIImageView = UIImageView(image: UIImage(named: "systemBtn")!);
     
     convenience init(systems: [SystemModel]) {
         self.init();
         
-        self.title.text = "System";
-        self.title.clipsToBounds = false;
-        self.title.textColor = UIColor.blackColor();
+        
+        self.background.contentMode = UIViewContentMode.ScaleAspectFit;
+        self.clipsToBounds = false;
         for (var i = 0; i < systems.count; i++) {
             let button = SystemButton();
             button.index = i;
-            button.setTitle(systems[i].title, forState: .Normal);
+            button.setEmbossedText(systems[i].title, color: UIColor(red: 0.408, green: 0.380, blue: 0.380, alpha: 1.00));
             button.setTitleColor(UIColor.blackColor(), forState: .Normal);
             button.addTarget(self, action: "systemPress:", forControlEvents: .TouchUpInside);
             button.clipsToBounds = false;
+            button.setPosition();
             button.deselectButton();
+            button.setUpView();
             self.systemButtons.append(button);
         }
         
@@ -52,13 +54,19 @@ class SystemSelect: BaseView {
             }
             
         }
+        UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+
     }
     
     
     override func didLoad() {
         super.didLoad();
         
-        self.addSubview(self.title);
+        if (self.systemButtons.count == 0) {
+            return;
+        }
+        
+        self.addSubview(self.background);
         for (var i = 0; i < self.systemButtons.count; i++) {
             self.addSubview(self.systemButtons[i]);
         }
@@ -69,14 +77,10 @@ class SystemSelect: BaseView {
     
     override func layoutSubviews() {
         
-        self.title.snp_remakeConstraints {
+        self.background.snp_remakeConstraints(closure: {
             make in
-            make.left.equalTo(self).offset(Constants.padding);
-            make.right.equalTo(self).offset(Constants.padding * -1);
-            make.top.equalTo(self).offset(Constants.padding);
-            make.height.equalTo(Constants.padding * 3);
-        }
-        
+            make.edges.equalTo(self);
+        })
         
         for (var i = 0; i < self.systemButtons.count; i++) {
             if (i == 0) {
@@ -84,17 +88,16 @@ class SystemSelect: BaseView {
                     make in
                     make.left.equalTo(self).offset(Constants.padding)
                     make.right.equalTo(self.systemButtons[i + 1].snp_left).offset(Constants.padding * -1);
-                    make.top.equalTo(self.title.snp_bottom).offset(Constants.padding);
-                    make.height.equalTo(Constants.padding * 3);
-                    make.width.equalTo(self.systemButtons[i + 1]);
+                    make.top.equalTo(self.background).offset(-Constants.padding * 4);
+                    make.bottom.equalTo(self.background);
                 })
             } else if ( i == self.systemButtons.count - 1) {
                 self.systemButtons[i].snp_remakeConstraints(closure: {
                     make in
                     make.left.equalTo(self.systemButtons[i - 1].snp_right).offset(Constants.padding)
                     make.right.equalTo(self).offset(Constants.padding * -1);
-                    make.top.equalTo(self.title.snp_bottom).offset(Constants.padding);
-                    make.height.equalTo(Constants.padding * 3);
+                    make.top.equalTo(self.background).offset(-Constants.padding * 4);
+                    make.bottom.equalTo(self.background);
                     make.width.equalTo(self.systemButtons[i - 1]);
                 })
             } else {
@@ -102,8 +105,8 @@ class SystemSelect: BaseView {
                     make in
                     make.left.equalTo(self.systemButtons[i - 1].snp_right).offset(Constants.padding)
                     make.right.equalTo(self.systemButtons[i + 1].snp_left).offset(Constants.padding * -1);
-                    make.top.equalTo(self.title.snp_bottom).offset(Constants.padding);
-                    make.height.equalTo(Constants.padding * 3);
+                    make.top.equalTo(self.background).offset(-Constants.padding * 4);
+                    make.bottom.equalTo(self.background);
                     make.width.equalTo(self.systemButtons[i - 1]);
                 })
             }

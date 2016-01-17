@@ -28,11 +28,11 @@ class SystemModel {
     func getTitleText() -> String {
         switch(self.type) {
         case .PC:
-            return "PC/STEAM";
+            return "PC";
         case .PS4:
             return "PS4"
         case .XBOXONE:
-            return "XBOXONE";
+            return "XBOX 1";
         }
         
     }

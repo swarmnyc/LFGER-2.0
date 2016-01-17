@@ -5,13 +5,16 @@
 
 target 'LFGERREAL' do
 pod 'Alamofire', '~> 3.0'
+pod 'YIInnerShadowView', '~> 1.1'
 end
 
 target 'LFGERREALTests' do
 pod 'Alamofire', '~> 3.0'
+pod 'YIInnerShadowView', '~> 1.1'
 end
 
 target 'LFGERREALUITests' do
 pod 'Alamofire', '~> 3.0'
+pod 'YIInnerShadowView', '~> 1.1'
 end
 

@@ -23,6 +23,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func loadView() {
         super.loadView();
         self.view = self.mainView;
+        self.mainView.goToSettingsFunc({
+           self.navigationController?.pushViewController(SettingsViewController(), animated: true);
+        });
+        
         
         self.gamesList.registerClass(GamesListCell.self, forCellReuseIdentifier: GamesListCell.REUSE_ID);
         self.gamesList.backgroundColor = UIColor.whiteColor();
@@ -34,6 +38,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.lfgView.setUpSystems(systems);
         
         
+        self.navigationController?.navigationBarHidden = true;
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.navigationBarHidden = true;
+
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+        self.lfgView.setNeedsUpdateConstraints();
     }
     
     override func viewDidLoad() {
@@ -58,7 +74,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if (game == "" || name == "") {
             
-            let _ = SWRMErrorSimple(alertTitle: "NOPE", alertText: "You have to give us your name and the game you are playing");
+            let _ = SWRMErrorSimple(alertTitle: "NOPE", alertText: "You have to give us your gamertag and the game you want to play");
             return;
         }
         
@@ -79,6 +95,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         submission.sendToServer();
         self.gamesList.reloadData();
         self.shareToSocial(sitesToShareOn, callback: {
+            
+            
             self.mainView.setContentOffset(CGPointMake(0, UIScreen.mainScreen().bounds.height), animated: true);
         });
         
@@ -99,7 +117,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 vc.completionHandler = {
                     result in
                     sites.removeAtIndex(0);
+                    Background.runInMainThread({
                     self.shareToSocial(sites, callback: callback);
+                    });
                 }
             self.presentViewController(vc, animated: true, completion: nil);
             } else {
@@ -114,7 +134,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 vc.completionHandler = {
                     result in
                     sites.removeAtIndex(0);
+                    Background.runInMainThread({
                     self.shareToSocial(sites, callback: callback);
+                    });
                 }
             self.presentViewController(vc, animated: true, completion: nil);
             } else {
@@ -189,7 +211,7 @@ class BaseView: UIView {
     
 
 class GamesListView: UITableView {
-    
+
     
     
  

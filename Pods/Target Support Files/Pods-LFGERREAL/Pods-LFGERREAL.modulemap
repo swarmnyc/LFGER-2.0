@@ -1,0 +1,6 @@
+framework module Pods_LFGERREAL {
+  umbrella header "Pods-LFGERREAL-umbrella.h"
+
+  export *
+  module * { export * }
+}

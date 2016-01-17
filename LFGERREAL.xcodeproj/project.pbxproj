@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11642E148E60D57385AB294D /* Pods_LFGERREALUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952A721E51CF4C49C76CD0DC /* Pods_LFGERREALUITests.framework */; };
+		41FA12A1346CD4BD0EA64109 /* Pods_LFGERREAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5725CD670D8CD87F58735A4 /* Pods_LFGERREAL.framework */; };
 		690957CA1C4ACAD5008A46F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690957C91C4ACAD5008A46F9 /* AppDelegate.swift */; };
 		690957CF1C4ACAD5008A46F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690957CD1C4ACAD5008A46F9 /* Main.storyboard */; };
 		690957D11C4ACAD5008A46F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 690957D01C4ACAD5008A46F9 /* Assets.xcassets */; };
@@ -38,6 +40,10 @@
 		6909582A1C4AD8C8008A46F9 /* SWRMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690958291C4AD8C8008A46F9 /* SWRMError.swift */; };
 		6909582C1C4AE533008A46F9 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6909582B1C4AE533008A46F9 /* AFDateExtension.swift */; };
 		6909582E1C4AEE1A008A46F9 /* GamesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6909582D1C4AEE1A008A46F9 /* GamesListCell.swift */; };
+		690958301C4AF6AD008A46F9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6909582F1C4AF6AD008A46F9 /* SettingsViewController.swift */; };
+		690958351C4AFFF0008A46F9 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690958341C4AFFF0008A46F9 /* TimeAgo.swift */; };
+		690958371C4B07F9008A46F9 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690958361C4B07F9008A46F9 /* Background.swift */; };
+		EE57ED3CE236657D2F5780F7 /* Pods_LFGERREALTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDEAAD76A1591D94A8C9B48 /* Pods_LFGERREALTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68CFCA71AB6CBBF2D892D11F /* Pods-LFGERREAL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREAL.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL.release.xcconfig"; sourceTree = "<group>"; };
 		690957C61C4ACAD5008A46F9 /* LFGERREAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFGERREAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		690957C91C4ACAD5008A46F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		690957CE1C4ACAD5008A46F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +102,18 @@
 		690958291C4AD8C8008A46F9 /* SWRMError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWRMError.swift; sourceTree = "<group>"; };
 		6909582B1C4AE533008A46F9 /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
 		6909582D1C4AEE1A008A46F9 /* GamesListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesListCell.swift; sourceTree = "<group>"; };
+		6909582F1C4AF6AD008A46F9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		690958311C4AFD66008A46F9 /* LFGERREAL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LFGERREAL-Bridging-Header.h"; sourceTree = "<group>"; };
+		690958341C4AFFF0008A46F9 /* TimeAgo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
+		690958361C4B07F9008A46F9 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		7C5C8C3A8CFD0BF15C50B726 /* Pods-LFGERREALUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREALUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREALUITests/Pods-LFGERREALUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7EDEAAD76A1591D94A8C9B48 /* Pods_LFGERREALTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LFGERREALTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB358C80E7AEDDC9C5DAFEB /* Pods-LFGERREALTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREALTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREALTests/Pods-LFGERREALTests.release.xcconfig"; sourceTree = "<group>"; };
+		952A721E51CF4C49C76CD0DC /* Pods_LFGERREALUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LFGERREALUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D9E558FA70549AE508F3A5 /* Pods-LFGERREALTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREALTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREALTests/Pods-LFGERREALTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D5725CD670D8CD87F58735A4 /* Pods_LFGERREAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LFGERREAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEB728CA254FA2AC12B537AA /* Pods-LFGERREAL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREAL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL.debug.xcconfig"; sourceTree = "<group>"; };
+		E2B4976BC3FE1AA642E6FFE4 /* Pods-LFGERREALUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREALUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREALUITests/Pods-LFGERREALUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41FA12A1346CD4BD0EA64109 /* Pods_LFGERREAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE57ED3CE236657D2F5780F7 /* Pods_LFGERREALTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,12 +137,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11642E148E60D57385AB294D /* Pods_LFGERREALUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FC2B9523E5C0DB195E278E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5725CD670D8CD87F58735A4 /* Pods_LFGERREAL.framework */,
+				7EDEAAD76A1591D94A8C9B48 /* Pods_LFGERREALTests.framework */,
+				952A721E51CF4C49C76CD0DC /* Pods_LFGERREALUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		690957BD1C4ACAD5008A46F9 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +161,8 @@
 				690957DD1C4ACAD5008A46F9 /* LFGERREALTests */,
 				690957E81C4ACAD5008A46F9 /* LFGERREALUITests */,
 				690957C71C4ACAD5008A46F9 /* Products */,
+				F9DE540ED030407F1D21D6E1 /* Pods */,
+				4FC2B9523E5C0DB195E278E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +191,9 @@
 				690957D21C4ACAD5008A46F9 /* LaunchScreen.storyboard */,
 				690957D51C4ACAD5008A46F9 /* Info.plist */,
 				6909582B1C4AE533008A46F9 /* AFDateExtension.swift */,
+				690958311C4AFD66008A46F9 /* LFGERREAL-Bridging-Header.h */,
+				690958341C4AFFF0008A46F9 /* TimeAgo.swift */,
+				690958361C4B07F9008A46F9 /* Background.swift */,
 			);
 			path = LFGERREAL;
 			sourceTree = "<group>";
@@ -193,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				690958081C4ACB3E008A46F9 /* MainViewController.swift */,
+				6909582F1C4AF6AD008A46F9 /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -229,6 +267,19 @@
 			name = SNAPKIT;
 			sourceTree = "<group>";
 		};
+		F9DE540ED030407F1D21D6E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEB728CA254FA2AC12B537AA /* Pods-LFGERREAL.debug.xcconfig */,
+				68CFCA71AB6CBBF2D892D11F /* Pods-LFGERREAL.release.xcconfig */,
+				A4D9E558FA70549AE508F3A5 /* Pods-LFGERREALTests.debug.xcconfig */,
+				8CB358C80E7AEDDC9C5DAFEB /* Pods-LFGERREALTests.release.xcconfig */,
+				7C5C8C3A8CFD0BF15C50B726 /* Pods-LFGERREALUITests.debug.xcconfig */,
+				E2B4976BC3FE1AA642E6FFE4 /* Pods-LFGERREALUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,9 +287,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 690957EE1C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREAL" */;
 			buildPhases = (
+				4F7251E18D29677CEA555729 /* Check Pods Manifest.lock */,
 				690957C21C4ACAD5008A46F9 /* Sources */,
 				690957C31C4ACAD5008A46F9 /* Frameworks */,
 				690957C41C4ACAD5008A46F9 /* Resources */,
+				25136E7582E0055778545D9E /* Embed Pods Frameworks */,
+				BB2C426F955F65487B394B5E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,9 +307,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALTests" */;
 			buildPhases = (
+				ED0C32A4CAB149711A8A5ECF /* Check Pods Manifest.lock */,
 				690957D61C4ACAD5008A46F9 /* Sources */,
 				690957D71C4ACAD5008A46F9 /* Frameworks */,
 				690957D81C4ACAD5008A46F9 /* Resources */,
+				E221A8CF8ECF8237D2A55E3A /* Embed Pods Frameworks */,
+				1623A41A9EF32E455C1AE9E0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,9 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALUITests" */;
 			buildPhases = (
+				CEBA5F55594BAFF11ABAAA72 /* Check Pods Manifest.lock */,
 				690957E11C4ACAD5008A46F9 /* Sources */,
 				690957E21C4ACAD5008A46F9 /* Frameworks */,
 				690957E31C4ACAD5008A46F9 /* Resources */,
+				A043B0786ED8F86075820216 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +414,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1623A41A9EF32E455C1AE9E0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREALTests/Pods-LFGERREALTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25136E7582E0055778545D9E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F7251E18D29677CEA555729 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A043B0786ED8F86075820216 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREALUITests/Pods-LFGERREALUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB2C426F955F65487B394B5E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEBA5F55594BAFF11ABAAA72 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E221A8CF8ECF8237D2A55E3A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREALTests/Pods-LFGERREALTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED0C32A4CAB149711A8A5ECF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		690957C21C4ACAD5008A46F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -362,6 +544,7 @@
 			files = (
 				690958231C4ACB96008A46F9 /* LayoutConstraint.swift in Sources */,
 				6909581B1C4ACB96008A46F9 /* Constraint.swift in Sources */,
+				690958351C4AFFF0008A46F9 /* TimeAgo.swift in Sources */,
 				690958071C4ACB01008A46F9 /* SocialShareStrip.swift in Sources */,
 				690958201C4ACB96008A46F9 /* ConstraintRelation.swift in Sources */,
 				6909582C1C4AE533008A46F9 /* AFDateExtension.swift in Sources */,
@@ -379,6 +562,7 @@
 				690958241C4ACB96008A46F9 /* SnapKit.swift in Sources */,
 				690958031C4ACB01008A46F9 /* SystemButton.swift in Sources */,
 				690957FC1C4ACAF5008A46F9 /* systemModel.swift in Sources */,
+				690958371C4B07F9008A46F9 /* Background.swift in Sources */,
 				690958041C4ACB01008A46F9 /* SystemSelector.swift in Sources */,
 				690957CA1C4ACAD5008A46F9 /* AppDelegate.swift in Sources */,
 				6909581C1C4ACB96008A46F9 /* ConstraintAttributes.swift in Sources */,
@@ -386,6 +570,7 @@
 				690957FD1C4ACAF5008A46F9 /* Submission.swift in Sources */,
 				6909581E1C4ACB96008A46F9 /* ConstraintItem.swift in Sources */,
 				6909582E1C4AEE1A008A46F9 /* GamesListCell.swift in Sources */,
+				690958301C4AF6AD008A46F9 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,28 +708,38 @@
 		};
 		690957EF1C4ACAD5008A46F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEB728CA254FA2AC12B537AA /* Pods-LFGERREAL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LFGERREAL/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREAL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LFGERREAL/LFGERREAL-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		690957F01C4ACAD5008A46F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68CFCA71AB6CBBF2D892D11F /* Pods-LFGERREAL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = LFGERREAL/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREAL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LFGERREAL/LFGERREAL-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		690957F21C4ACAD5008A46F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4D9E558FA70549AE508F3A5 /* Pods-LFGERREALTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LFGERREALTests/Info.plist;
@@ -557,6 +752,7 @@
 		};
 		690957F31C4ACAD5008A46F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CB358C80E7AEDDC9C5DAFEB /* Pods-LFGERREALTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LFGERREALTests/Info.plist;
@@ -569,6 +765,7 @@
 		};
 		690957F51C4ACAD5008A46F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C5C8C3A8CFD0BF15C50B726 /* Pods-LFGERREALUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LFGERREALUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -581,6 +778,7 @@
 		};
 		690957F61C4ACAD5008A46F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2B4976BC3FE1AA642E6FFE4 /* Pods-LFGERREALUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LFGERREALUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -610,6 +808,7 @@
 				690957F01C4ACAD5008A46F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALTests" */ = {
 			isa = XCConfigurationList;
@@ -618,6 +817,7 @@
 				690957F31C4ACAD5008A46F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALUITests" */ = {
 			isa = XCConfigurationList;
@@ -626,6 +826,7 @@
 				690957F61C4ACAD5008A46F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

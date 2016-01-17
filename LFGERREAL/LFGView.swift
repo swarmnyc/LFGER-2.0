@@ -104,7 +104,7 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
                 make.top.equalTo(sys.snp_bottom).offset(Constants.padding);
                 make.left.equalTo(self).offset(Constants.padding * 2);
                 make.right.equalTo(self).offset(-Constants.padding * 2);
-                make.height.equalTo(Constants.padding * 5);
+                make.height.equalTo(Constants.padding * 3);
                 
             })
             
@@ -113,7 +113,7 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
                 make.top.equalTo(gameInput.snp_bottom).offset(Constants.padding * 2);
                 make.left.equalTo(self).offset(Constants.padding * 2);
                 make.right.equalTo(self).offset(-Constants.padding * 2);
-                make.height.equalTo(Constants.padding * 5);
+                make.height.equalTo(Constants.padding * 3);
                 
             })
             
@@ -122,7 +122,7 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
                 make.top.equalTo(self.nameInput.snp_bottom).offset(Constants.padding * 2);
                 make.left.equalTo(self).offset(Constants.padding * 2);
                 make.right.equalTo(self).offset(-Constants.padding * 2);
-                make.height.equalTo(Constants.padding * 18);
+                make.height.equalTo(UIScreen.mainScreen().bounds.height * 0.1);
             })
             
             self.shareStrip.snp_remakeConstraints(closure: {
@@ -144,12 +144,11 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
             make.centerX.equalTo(self.snp_centerX)
             make.width.equalTo(self.LFGButton.snp_height);
             make.top.equalTo(self.shareStrip.snp_bottom).offset(Constants.padding * 2);
-            let item = self.LFGButton.snp_height;
-            self.LFGButton.layer.cornerRadius = CGFloat(item.attributes.rawValue) / CGFloat(1.5)
         })
 
         
-        
+        self.LFGButton.layer.cornerRadius = self.LFGButton.frame.size.height / 2;
+
         super.layoutSubviews();
     }
     

@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class GamesListCell: UITableViewCell, UITextViewDelegate {
     
     static var REUSE_ID = "GamesListCell";
@@ -32,8 +31,9 @@ class GamesListCell: UITableViewCell, UITextViewDelegate {
         self.system = submission.system.title;
         self.time = submission.timeStamp;
         self.message = submission.message;
-        self.timeStamp = self.time.toString(dateStyle: .ShortStyle, timeStyle: .ShortStyle);
-        self.dateLabel.text = self.timeStamp;
+        self.timeStamp = timeAgoSince(submission.timeStamp);
+        let timeString: String = timeAgoSince(submission.timeStamp);
+        self.dateLabel.text = timeString;
         self.dateLabel.textColor = UIColor.blackColor();
         self.messageView.delegate = self;
         if (self.messageView.superview == nil) {
@@ -134,7 +134,7 @@ class GamesListCell: UITableViewCell, UITextViewDelegate {
             self.dateLabel.snp_makeConstraints(closure: {
                 make in
                 make.left.equalTo(self.messageView.snp_right).offset(Constants.padding);
-                make.right.equalTo(self.contentView).offset(Constants.padding * -1);
+                make.width.equalTo(120);
                 make.top.equalTo(self.contentView);
                 make.bottom.equalTo(self.contentView);
             })

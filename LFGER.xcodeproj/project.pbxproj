@@ -73,10 +73,10 @@
 		690957D01C4ACAD5008A46F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		690957D31C4ACAD5008A46F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		690957D51C4ACAD5008A46F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		690957DA1C4ACAD5008A46F9 /* LFGERREALTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LFGERREALTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		690957DA1C4ACAD5008A46F9 /* LFGER.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LFGER.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		690957DE1C4ACAD5008A46F9 /* LFGERREALTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGERREALTests.swift; sourceTree = "<group>"; };
 		690957E01C4ACAD5008A46F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		690957E51C4ACAD5008A46F9 /* LFGERREALUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LFGERREALUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		690957E51C4ACAD5008A46F9 /* LFGER.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LFGER.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		690957E91C4ACAD5008A46F9 /* LFGERREALUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFGERREALUITests.swift; sourceTree = "<group>"; };
 		690957EB1C4ACAD5008A46F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		690957FA1C4ACAF5008A46F9 /* systemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = systemModel.swift; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				690957C61C4ACAD5008A46F9 /* LFGERREAL.app */,
-				690957DA1C4ACAD5008A46F9 /* LFGERREALTests.xctest */,
-				690957E51C4ACAD5008A46F9 /* LFGERREALUITests.xctest */,
+				690957DA1C4ACAD5008A46F9 /* LFGER.xctest */,
+				690957E51C4ACAD5008A46F9 /* LFGER.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,9 +286,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		690957C51C4ACAD5008A46F9 /* LFGERREAL */ = {
+		690957C51C4ACAD5008A46F9 /* LFGER */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 690957EE1C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREAL" */;
+			buildConfigurationList = 690957EE1C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGER" */;
 			buildPhases = (
 				4F7251E18D29677CEA555729 /* Check Pods Manifest.lock */,
 				690957C21C4ACAD5008A46F9 /* Sources */,
@@ -302,14 +302,14 @@
 			);
 			dependencies = (
 			);
-			name = LFGERREAL;
+			name = LFGER;
 			productName = LFGERREAL;
 			productReference = 690957C61C4ACAD5008A46F9 /* LFGERREAL.app */;
 			productType = "com.apple.product-type.application";
 		};
-		690957D91C4ACAD5008A46F9 /* LFGERREALTests */ = {
+		690957D91C4ACAD5008A46F9 /* LFGERTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALTests" */;
+			buildConfigurationList = 690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERTests" */;
 			buildPhases = (
 				ED0C32A4CAB149711A8A5ECF /* Check Pods Manifest.lock */,
 				690957D61C4ACAD5008A46F9 /* Sources */,
@@ -323,14 +323,14 @@
 			dependencies = (
 				690957DC1C4ACAD5008A46F9 /* PBXTargetDependency */,
 			);
-			name = LFGERREALTests;
+			name = LFGERTests;
 			productName = LFGERREALTests;
-			productReference = 690957DA1C4ACAD5008A46F9 /* LFGERREALTests.xctest */;
+			productReference = 690957DA1C4ACAD5008A46F9 /* LFGER.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		690957E41C4ACAD5008A46F9 /* LFGERREALUITests */ = {
+		690957E41C4ACAD5008A46F9 /* LFGERUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALUITests" */;
+			buildConfigurationList = 690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERUITests" */;
 			buildPhases = (
 				CEBA5F55594BAFF11ABAAA72 /* Check Pods Manifest.lock */,
 				690957E11C4ACAD5008A46F9 /* Sources */,
@@ -343,9 +343,9 @@
 			dependencies = (
 				690957E71C4ACAD5008A46F9 /* PBXTargetDependency */,
 			);
-			name = LFGERREALUITests;
+			name = LFGERUITests;
 			productName = LFGERREALUITests;
-			productReference = 690957E51C4ACAD5008A46F9 /* LFGERREALUITests.xctest */;
+			productReference = 690957E51C4ACAD5008A46F9 /* LFGER.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -372,7 +372,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 690957C11C4ACAD5008A46F9 /* Build configuration list for PBXProject "LFGERREAL" */;
+			buildConfigurationList = 690957C11C4ACAD5008A46F9 /* Build configuration list for PBXProject "LFGER" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -385,9 +385,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				690957C51C4ACAD5008A46F9 /* LFGERREAL */,
-				690957D91C4ACAD5008A46F9 /* LFGERREALTests */,
-				690957E41C4ACAD5008A46F9 /* LFGERREALUITests */,
+				690957C51C4ACAD5008A46F9 /* LFGER */,
+				690957D91C4ACAD5008A46F9 /* LFGERTests */,
+				690957E41C4ACAD5008A46F9 /* LFGERUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -614,12 +614,12 @@
 /* Begin PBXTargetDependency section */
 		690957DC1C4ACAD5008A46F9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 690957C51C4ACAD5008A46F9 /* LFGERREAL */;
+			target = 690957C51C4ACAD5008A46F9 /* LFGER */;
 			targetProxy = 690957DB1C4ACAD5008A46F9 /* PBXContainerItemProxy */;
 		};
 		690957E71C4ACAD5008A46F9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 690957C51C4ACAD5008A46F9 /* LFGERREAL */;
+			target = 690957C51C4ACAD5008A46F9 /* LFGER */;
 			targetProxy = 690957E61C4ACAD5008A46F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -736,7 +736,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREAL;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LFGER;
 				SWIFT_OBJC_BRIDGING_HEADER = "LFGERREAL/LFGERREAL-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -753,7 +753,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREAL;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LFGER;
 				SWIFT_OBJC_BRIDGING_HEADER = "LFGERREAL/LFGERREAL-Bridging-Header.h";
 			};
 			name = Release;
@@ -766,8 +766,8 @@
 				INFOPLIST_FILE = LFGERREALTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREALTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LFGERREAL.app/LFGERREAL";
+				PRODUCT_NAME = LFGER;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LFGER.app/LFGER";
 			};
 			name = Debug;
 		};
@@ -779,8 +779,8 @@
 				INFOPLIST_FILE = LFGERREALTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREALTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LFGERREAL.app/LFGERREAL";
+				PRODUCT_NAME = LFGER;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LFGER.app/LFGER";
 			};
 			name = Release;
 		};
@@ -791,7 +791,7 @@
 				INFOPLIST_FILE = LFGERREALUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREALUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LFGER;
 				TEST_TARGET_NAME = LFGERREAL;
 				USES_XCTRUNNER = YES;
 			};
@@ -804,7 +804,7 @@
 				INFOPLIST_FILE = LFGERREALUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SWARM.LFGERREALUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LFGER;
 				TEST_TARGET_NAME = LFGERREAL;
 				USES_XCTRUNNER = YES;
 			};
@@ -813,7 +813,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		690957C11C4ACAD5008A46F9 /* Build configuration list for PBXProject "LFGERREAL" */ = {
+		690957C11C4ACAD5008A46F9 /* Build configuration list for PBXProject "LFGER" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				690957EC1C4ACAD5008A46F9 /* Debug */,
@@ -822,7 +822,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		690957EE1C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREAL" */ = {
+		690957EE1C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGER" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				690957EF1C4ACAD5008A46F9 /* Debug */,
@@ -831,7 +831,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALTests" */ = {
+		690957F11C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				690957F21C4ACAD5008A46F9 /* Debug */,
@@ -840,7 +840,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERREALUITests" */ = {
+		690957F41C4ACAD5008A46F9 /* Build configuration list for PBXNativeTarget "LFGERUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				690957F51C4ACAD5008A46F9 /* Debug */,

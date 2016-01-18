@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "690957C51C4ACAD5008A46F9"
-               BuildableName = "LFGERREAL.app"
-               BlueprintName = "LFGERREAL"
-               ReferencedContainer = "container:LFGERREAL.xcodeproj">
+               BuildableName = "LFGER.app"
+               BlueprintName = "LFGER"
+               ReferencedContainer = "container:LFGER.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "690957D91C4ACAD5008A46F9"
-               BuildableName = "LFGERREALTests.xctest"
-               BlueprintName = "LFGERREALTests"
-               ReferencedContainer = "container:LFGERREAL.xcodeproj">
+               BuildableName = "LFGER.xctest"
+               BlueprintName = "LFGERTests"
+               ReferencedContainer = "container:LFGER.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "690957E41C4ACAD5008A46F9"
-               BuildableName = "LFGERREALUITests.xctest"
-               BlueprintName = "LFGERREALUITests"
-               ReferencedContainer = "container:LFGERREAL.xcodeproj">
+               BuildableName = "LFGER.xctest"
+               BlueprintName = "LFGERUITests"
+               ReferencedContainer = "container:LFGER.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "690957C51C4ACAD5008A46F9"
-            BuildableName = "LFGERREAL.app"
-            BlueprintName = "LFGERREAL"
-            ReferencedContainer = "container:LFGERREAL.xcodeproj">
+            BuildableName = "LFGER.app"
+            BlueprintName = "LFGER"
+            ReferencedContainer = "container:LFGER.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "690957C51C4ACAD5008A46F9"
-            BuildableName = "LFGERREAL.app"
-            BlueprintName = "LFGERREAL"
-            ReferencedContainer = "container:LFGERREAL.xcodeproj">
+            BuildableName = "LFGER.app"
+            BlueprintName = "LFGER"
+            ReferencedContainer = "container:LFGER.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "690957C51C4ACAD5008A46F9"
-            BuildableName = "LFGERREAL.app"
-            BlueprintName = "LFGERREAL"
-            ReferencedContainer = "container:LFGERREAL.xcodeproj">
+            BuildableName = "LFGER.app"
+            BlueprintName = "LFGER"
+            ReferencedContainer = "container:LFGER.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

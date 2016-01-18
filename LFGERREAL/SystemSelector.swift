@@ -15,11 +15,13 @@ class SystemSelect: BaseView {
     var systemButtons: [SystemButton] = [];
     var selectedIndex: Int = 0;
     var background: UIImageView = UIImageView(image: UIImage(named: "systemBtn")!);
-    
-    convenience init(systems: [SystemModel]) {
+    var onChange: ((String, oldIndex: Int) -> ())?
+    var systems: [SystemModel] = [];
+    convenience init(systems: [SystemModel], onChange: ((String, Int) -> ())) {
         self.init();
         
-        
+        self.onChange = onChange;
+        self.systems = systems;
         self.background.contentMode = UIViewContentMode.ScaleAspectFit;
         self.clipsToBounds = false;
         for (var i = 0; i < systems.count; i++) {
@@ -43,10 +45,17 @@ class SystemSelect: BaseView {
     
     func systemPress(sender: UIButton) {
         let sysButton: SystemButton? = sender as? SystemButton;
+        var selected = 0;
+        var oldSelected = 0;
         if let b = sysButton {
             print("button " + b.index.description + " selected");
             for (var i = 0; i < self.systemButtons.count; i++) {
+                if (self.systemButtons[i].selectedImage.alpha == 1) {
+                    oldSelected = i;
+                }
+                
                 if (i == b.index) {
+                    selected = i;
                     self.systemButtons[i].selectButton();
                 } else {
                     self.systemButtons[i].deselectButton();
@@ -54,6 +63,12 @@ class SystemSelect: BaseView {
             }
             
         }
+        
+        
+        self.selectedIndex = selected;
+        
+        self.onChange?(self.systems[selected].getPlatformId(), oldIndex: oldSelected);
+        
         UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
 
     }

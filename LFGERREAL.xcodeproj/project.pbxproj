@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11642E148E60D57385AB294D /* Pods_LFGERREALUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952A721E51CF4C49C76CD0DC /* Pods_LFGERREALUITests.framework */; };
+		2C43B0601C4D47C600692FB1 /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B05F1C4D47C600692FB1 /* SavedData.swift */; };
 		41FA12A1346CD4BD0EA64109 /* Pods_LFGERREAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5725CD670D8CD87F58735A4 /* Pods_LFGERREAL.framework */; };
 		690957CA1C4ACAD5008A46F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690957C91C4ACAD5008A46F9 /* AppDelegate.swift */; };
 		690957CF1C4ACAD5008A46F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690957CD1C4ACAD5008A46F9 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C43B05F1C4D47C600692FB1 /* SavedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		68CFCA71AB6CBBF2D892D11F /* Pods-LFGERREAL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREAL.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL.release.xcconfig"; sourceTree = "<group>"; };
 		690957C61C4ACAD5008A46F9 /* LFGERREAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFGERREAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		690957C91C4ACAD5008A46F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				690957FA1C4ACAF5008A46F9 /* systemModel.swift */,
 				690957FB1C4ACAF5008A46F9 /* Submission.swift */,
 				690958291C4AD8C8008A46F9 /* SWRMError.swift */,
+				2C43B05F1C4D47C600692FB1 /* SavedData.swift */,
 			);
 			name = MODELS;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				690957C41C4ACAD5008A46F9 /* Resources */,
 				25136E7582E0055778545D9E /* Embed Pods Frameworks */,
 				BB2C426F955F65487B394B5E /* Copy Pods Resources */,
+				2C43B0611C4D631F00692FB1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -356,6 +360,7 @@
 				TargetAttributes = {
 					690957C51C4ACAD5008A46F9 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 49E6AM57U3;
 					};
 					690957D91C4ACAD5008A46F9 = {
 						CreatedOnToolsVersion = 7.2;
@@ -444,6 +449,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2C43B0611C4D631F00692FB1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" bf47947e755123f361876ba094b1cd59b173f200 04921556ec784fd193b0c49424eb840186efd214577203ac85b1a344f7c56762";
 		};
 		4F7251E18D29677CEA555729 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -561,6 +579,7 @@
 				690958261C4ACB96008A46F9 /* ViewController+SnapKit.swift in Sources */,
 				690958241C4ACB96008A46F9 /* SnapKit.swift in Sources */,
 				690958031C4ACB01008A46F9 /* SystemButton.swift in Sources */,
+				2C43B0601C4D47C600692FB1 /* SavedData.swift in Sources */,
 				690957FC1C4ACAF5008A46F9 /* systemModel.swift in Sources */,
 				690958371C4B07F9008A46F9 /* Background.swift in Sources */,
 				690958041C4ACB01008A46F9 /* SystemSelector.swift in Sources */,
@@ -712,6 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LFGERREAL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -728,6 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = LFGERREAL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

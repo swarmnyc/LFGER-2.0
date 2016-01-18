@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-LFGERREAL/Alamofire.framework"
+  install_framework "Pods-LFGERREAL/SwiftyJSON.framework"
   install_framework "Pods-LFGERREAL/YIInnerShadowView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-LFGERREAL/Alamofire.framework"
+  install_framework "Pods-LFGERREAL/SwiftyJSON.framework"
   install_framework "Pods-LFGERREAL/YIInnerShadowView.framework"
 fi

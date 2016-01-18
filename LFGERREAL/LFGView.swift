@@ -154,7 +154,8 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
     var gamePlaceholder: String = "Game";
     var messagePlaceholder: String = "Let people know what's what";
     
-    func setUpSystems(systems: [SystemModel]) {
+    
+    func setUpSystems(systems: [SystemModel], onChange: ((String, Int) -> ())) {
         
 
         let gradient: CAGradientLayer = CAGradientLayer()
@@ -162,14 +163,22 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
         gradient.colors = [UIColor(red: 247/255.0, green: 247/255.0, blue: 247/255.0, alpha: 255).CGColor, UIColor(red: 208/255.0, green: 207/255.0, blue: 206/255.0, alpha: 255).CGColor]
         self.layer.insertSublayer(gradient, atIndex: 0)
         
-        self.systemSelect = SystemSelect(systems: systems);
+        self.systemSelect = SystemSelect(systems: systems, onChange: onChange);
         self.addSubview(self.systemSelect!);
+        
         
         
         self.gameInput.text = self.gamePlaceholder;
         self.gameInput.delegate = self;
         self.gameInput.setUpGradients();
         self.nameInput.text = self.namePlaceholder;
+        
+        let name = SavedData.getData("name:" + systems[0].getPlatformId());
+        if let n = name {
+            self.nameInput.text = n;
+        }
+        
+        
         self.nameInput.delegate = self;
         self.nameInput.setUpGradients();
         self.gameInput.enabled = true;
@@ -228,7 +237,6 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
     func clearData() {
         self.message.text = self.messagePlaceholder;
         self.gameInput.text = self.gamePlaceholder;
-        self.nameInput.text = self.namePlaceholder;
     }
     
     override func layoutSubviews() {
@@ -286,10 +294,10 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
         
         self.LFGButton.snp_remakeConstraints(closure: {
             make in
-            make.bottom.equalTo(self).offset(-Constants.padding * 2);
+            make.bottom.equalTo(self).offset(-Constants.padding);
             make.centerX.equalTo(self.snp_centerX)
             make.width.equalTo(UIScreen.mainScreen().bounds.width * 0.35);
-            make.top.equalTo(self.shareStrip.snp_bottom);
+            make.top.equalTo(self.shareStrip.snp_bottom).offset(Constants.padding);
         })
 
         
@@ -338,6 +346,10 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
                 textField.text = self.namePlaceholder;
             }
         }
+        
+        
+        
+        
         let textF: FancyTextField = textField as! FancyTextField;
         textF.endEditingView();
     }

@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YIInnerShadowView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>017BEC1B91F3D2D240CA43778AFC4305</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44335642A42BE41E996D490A4728D656</key>
+		<key>4FA6584415DE32DBDD9403B691B68B9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>682F845729DD4CE84A57319C27139D89</key>
+		<key>5D8DEE14BE8AEE88BD430F93E854C692</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B593AFA08D5E5365D6EFDE5831FB62B1</key>
+		<key>781B11557C1F300E57A47A07E49BA74D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F90652B6F6C0A171FD21947482E9A9D3</key>
+		<key>AA082E7882083540EA2F72B0F718E143</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -28,6 +28,7 @@ class SocialShareButton: BaseView {
         
         self.label.textAlignment = NSTextAlignment.Center;
         self.label.font = UIFont.systemFontOfSize(13);
+        self.label.textColor = UIColor(red: 0.706, green: 0.635, blue: 0.600, alpha: 1.00);
         self.unselectedView.contentMode = UIViewContentMode.ScaleAspectFit;
         self.selectedView.contentMode = UIViewContentMode.ScaleAspectFit;
         self.selectedView.alpha = 0;
@@ -56,10 +57,20 @@ class SocialShareButton: BaseView {
             selected = false;
             self.selectedView.alpha = 0;
             self.unselectedView.alpha = 1;
+            self.label.textColor = UIColor(red: 0.706, green: 0.635, blue: 0.600, alpha: 1.00);
+
+            self.label.layer.shadowColor = UIColor.clearColor().CGColor;
+
         } else {
             selected = true;
             self.selectedView.alpha = 1;
             self.unselectedView.alpha = 0;
+            self.label.textColor = UIColor(red: 0.420, green: 0.780, blue: 1, alpha: 1.00);
+            self.label.layer.shadowColor = UIColor(red: 0.320, green: 0.680, blue: 0.976, alpha: 1.00).CGColor;
+            self.label.layer.shadowRadius = 4;
+            self.label.layer.shadowOffset = CGSizeMake(0,0);
+            self.label.layer.masksToBounds = false;
+            self.label.layer.shadowOpacity = 1;
         }
         
         UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)

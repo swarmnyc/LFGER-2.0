@@ -25,6 +25,13 @@ class SystemModel {
         
     }
     
+    init(id: String) {
+        self.type = self.getTypeFromId(id);
+        self.title = self.getTitleText();
+        
+        
+    }
+    
     func getTitleText() -> String {
         switch(self.type) {
         case .PC:
@@ -35,6 +42,45 @@ class SystemModel {
             return "XBOX 1";
         }
         
+    }
+    
+    func getTypeFromId(id: String) -> System {
+        switch(id) {
+        case "569c00279f9e981c18f77573":
+            return .PC;
+        case "569c00279f9e981c18f77574":
+            return .PS4
+        case "569c00279f9e981c18f77575":
+            return .XBOXONE;
+        default:
+            return .PC
+        }
+        
+    }
+    
+    func getProfileLink(name: String) -> String {
+    switch(self.type) {
+    case .PC:
+        return "https://steamcommunity.com/search/?text=" + name + "&x=0&y=0";
+    case .PS4:
+        return "http://psnprofiles.com/" + name;
+    case .XBOXONE:
+        return "http://live.xbox.com/Profile?Gamertag=" + name;
+    }
+    
+    
+    
+    }
+    
+    func getPlatformId() -> String {
+        switch(self.type) {
+        case .PC:
+            return "569c00279f9e981c18f77573";
+        case .PS4:
+            return "569c00279f9e981c18f77574"
+        case .XBOXONE:
+            return "569c00279f9e981c18f77575";
+        }
     }
     
     

@@ -9,7 +9,6 @@
 import Foundation
 
 class Submission {
-    
     var system: SystemModel = SystemModel(type: .PC);
     var username: String = "";
     var shouldShareFB: Bool = true;
@@ -18,27 +17,26 @@ class Submission {
     var timeStamp: NSDate = NSDate();
     var game: String = "";
     var isYours: Bool = false;
-    var removeCallback: ((Submission) -> ())?
     var id: String = "";
+    
     init() {
         
         
     }
     
-    init(system: SystemModel, username: String, message: String, game: String, timeStamp: NSDate, isYours: Bool, removeCallback: ((Submission) -> ())) {
+    init(system: SystemModel, username: String, message: String, game: String, timeStamp: NSDate, isYours: Bool, id: String) {
         self.system = system;
         self.username = username;
         self.message = message;
         self.game = game;
         self.timeStamp = timeStamp;
         self.isYours = isYours;
-        self.id = randomAlphaNumericString(10);
-        self.removeCallback = removeCallback;
+        self.id = id;
     }
     
     func removeIt() {
-        //call up to server and remove this
-        self.removeCallback?(self);
+        SubmissionService.removeLFG(self.id, callback: {});
+        
     }
     
     

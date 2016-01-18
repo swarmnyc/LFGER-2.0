@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = UINavigationController(rootViewController: MainViewController());
         window!.makeKeyAndVisible()
+        window!.backgroundColor = UIColor(red: 0.847, green: 0.843, blue: 0.839, alpha: 1.00);
         
         
+        Fabric.with([Crashlytics.self])
+
         return true
     }
     

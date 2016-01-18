@@ -18,24 +18,64 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var gamesList: GamesListView = GamesListView();
     
     var gameListData: [Submission] = [];
-    
-    
+    var oldData: [([Submission], String)] = [];
     override func loadView() {
         super.loadView();
         self.view = self.mainView;
         self.mainView.goToSettingsFunc({
            self.navigationController?.pushViewController(SettingsViewController(), animated: true);
         });
+        self.mainView.goBackFunc({
+            if (self.oldData.count > 0) {
+                self.gameListData = self.oldData[self.oldData.count - 1].0;
+                self.animateOutCells({
+                    self.gamesList.reloadData();
+                    self.mainView.setTitleAttrText(self.oldData[self.oldData.count - 1].1)
+                    self.oldData.removeAtIndex(self.oldData.count - 1);
+                    if (self.oldData.count == 0) {
+                        self.mainView.goBackLink.alpha = 0;
+                    }
+                });
+                
+            }
+            
+        })
+        
+        
         
         
         self.gamesList.registerClass(GamesListCell.self, forCellReuseIdentifier: GamesListCell.REUSE_ID);
-        self.gamesList.backgroundColor = UIColor.whiteColor();
+        self.gamesList.backgroundColor = UIColor.clearColor();
         self.gamesList.dataSource = self;
         self.gamesList.delegate = self;
+        self.gamesList.separatorStyle = UITableViewCellSeparatorStyle.None;
         
         self.mainView.setItUp(self.lfgView, bottomView: self.gamesList);
         self.mainView.delegate = self;
-        self.lfgView.setUpSystems(systems);
+        self.lfgView.setUpSystems(systems, onChange: {
+            platformId, oldIndex in
+            
+            if (self.lfgView.getGamerTag() == "") {
+                return
+            }
+            
+            SavedData.saveData("name:" + self.systems[oldIndex].getPlatformId(), value: self.lfgView.getGamerTag());
+            
+            let name = SavedData.getData("name:" + platformId);
+            print("ON CHANGE!!!! ");
+            print(name);
+            if let n = name {
+                self.lfgView.nameInput.text = n;
+            }
+        });
+        
+        
+        SubmissionService.getGames("", platform: "", callback: {
+            submissions in
+            
+            self.gameListData += submissions;
+            self.gamesList.reloadData();
+        })
         
         
         self.navigationController?.navigationBarHidden = true;
@@ -84,33 +124,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         
-        let submission: Submission = Submission(system: system, username: name, message: message,game: game, timeStamp: NSDate(), isYours: true, removeCallback: {
-            submission in
-            for (var i = self.gameListData.count - 1; i >= 0; i--) {
-                if (self.gameListData[i].id == submission.id) {
-                    self.gameListData.removeAtIndex(i);
-                }
-            }
-            
-            self.gamesList.reloadData();
-            
-            
-        });
-        self.gameListData.append(submission);
+        let submission: Submission = Submission(system: system, username: name, message: message,game: game, timeStamp: NSDate(), isYours: true, id: "");
+        if (self.oldData.count > 0) {
+            self.gameListData = self.oldData[0].0;
+            self.title = self.oldData[0].1;
+            self.oldData = [];
+        }
+        self.gameListData.insert(submission, atIndex: 0);
         submission.sendToServer();
         self.gamesList.reloadData();
-        self.shareToSocial(sitesToShareOn, callback: {
-            
-            self.lfgView.clearData();
-            self.mainView.setContentOffset(CGPointMake(0, UIScreen.mainScreen().bounds.height * 0.85), animated: true);
-            self.mainView.onTop = false;
+        self.shareToSocial(submission, sites: sitesToShareOn, callback: {
+            SubmissionService.submitGame(submission, callback: {
+                submission in
+                self.lfgView.clearData();
+                self.mainView.setContentOffset(CGPointMake(0, UIScreen.mainScreen().bounds.height * 0.85), animated: true);
+                self.mainView.onTop = false;
+                
+            })
         });
         
         
     }
     
     
-    func shareToSocial(var sites: [SocialSites], callback: (() -> ())) {
+    func shareToSocial(submission: Submission, var sites: [SocialSites], callback: (() -> ())) {
         
         if (sites.count == 0) {
             callback();
@@ -120,34 +157,36 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (sites[0] == SocialSites.Twitter) {
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
                 let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter);
+                vc.setInitialText("Play " + submission.game + " with me(" + submission.username + ")" + " on " + submission.system.title + "!!!!\n\n" + submission.message + "\n\n" + "http://lfger.com/");
                 vc.completionHandler = {
                     result in
                     sites.removeAtIndex(0);
                     Background.runInMainThread({
-                    self.shareToSocial(sites, callback: callback);
+                        self.shareToSocial(submission, sites: sites, callback: callback);
                     });
                 }
             self.presentViewController(vc, animated: true, completion: nil);
             } else {
                 sites.removeAtIndex(0);
-                self.shareToSocial(sites, callback: callback);
+                self.shareToSocial(submission, sites: sites, callback: callback);
                 return
             }
         }
         if (sites[0] == SocialSites.Facebook) {
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook);
+                vc.setInitialText("Play " + submission.game + " with me(" + submission.username + ")" + " on " + submission.system.title + "!!!!\n\n" + submission.message + "\n\n" + "http://lfger.com/");
                 vc.completionHandler = {
                     result in
                     sites.removeAtIndex(0);
                     Background.runInMainThread({
-                    self.shareToSocial(sites, callback: callback);
+                    self.shareToSocial(submission, sites: sites, callback: callback);
                     });
                 }
             self.presentViewController(vc, animated: true, completion: nil);
             } else {
                 sites.removeAtIndex(0);
-                self.shareToSocial(sites, callback: callback);
+                self.shareToSocial(submission, sites: sites, callback: callback);
                 return
             }
         }
@@ -156,7 +195,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120;
+        let tv = UITextView()
+        tv.text = self.gameListData[indexPath.row].message;
+        tv.font = UIFont.systemFontOfSize(15);
+        let size = tv.sizeThatFits(CGSizeMake(UIScreen.mainScreen().bounds.width - Constants.padding * 15, CGFloat.max));
+        return Constants.padding * 7 + size.height;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,17 +207,117 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         let cell: GamesListCell = tableView.dequeueReusableCellWithIdentifier(GamesListCell.REUSE_ID) as! GamesListCell;
-        cell.contentView.layer.borderWidth = 2;
-        cell.contentView.layer.borderColor = UIColor.blackColor().CGColor;
-        cell.setItUp(self.gameListData[indexPath.row]);
+        
+        cell.setItUp(self.gameListData[indexPath.row], visibleIndex: indexPath.row, scrollAmount: tableView.contentOffset.y, onFilter: {
+            submissions, text in
+            self.filterData(submissions, text: text);
+            
+            }, onFlag: {
+                submission in
+                for (var i = self.gameListData.count - 1; i >= 0; i--) {
+                    if (self.gameListData[i].id == submission.id) {
+                        submission.removeIt();
+                        self.gameListData.removeAtIndex(i);
+                        self.gamesList.reloadData();
+                        return;
+                    }
+                }
+        });
         cell.setNeedsUpdateConstraints();
         
         return cell;
     }
     
     
+    
+    
+    func filterData(submissions: [Submission], text: String) {
+        self.oldData.append((self.gameListData, self.mainView.getTitleText().string));
+        
+        self.animateOutCells({
+            self.mainView.goBackLink.alpha = 1;
+            self.gameListData = submissions;
+            self.gamesList.reloadData();
+            self.mainView.setTitleAttrText(text);
+//            self.animateCellsIn();
+        });
+        
+        
+    }
+    
+    func animateOutCells(callback: (() -> ())) {
+        var cells: [GamesListCell] = self.gamesList.visibleCells as! [GamesListCell];
+        cells = self.sortCells(cells);
+        
+        for (var i = 0; i < cells.count; i++) {
+            if (i == cells.count - 1) {
+                UIView.animateWithDuration(0.15 * Double(i), animations: {
+                    cells[i].alpha = 0;
+                    }, completion: {
+                        done in
+                        self.gamesList.setContentOffset(CGPoint(x: 0,y: 0), animated: false);
+                        callback()
+                });
+            } else {
+            UIView.animateWithDuration(0.15 * Double(i), animations: {
+                cells[i].alpha = 0;
+            });
+            }
+        }
+    }
+    
+    func sortCells(cells: [GamesListCell]) -> [GamesListCell] {
+        var newArray: [GamesListCell] = [];
+        
+        for (var i = 0; i < cells.count; i++) {
+            if (newArray.count == 0) {
+                newArray.append(cells[i]);
+            } else {
+                var added = false;
+                for (var p = 0; p < newArray.count; p++) {
+                    if (cells[i].visibleIndex < newArray[p].visibleIndex && added == false) {
+                        newArray.insert(cells[i], atIndex: p);
+                        added = true;
+                    }
+                }
+                if (added == false) {
+                    newArray.append(cells[i]);
+                }
+            }
+        }
+        
+        return newArray;
+    }
+    
+    
+    func animateCellsIn() {
+        var cells: [GamesListCell] = self.gamesList.visibleCells as! [GamesListCell];
+        cells = self.sortCells(cells);
+        
+        for (var i = 0; i < cells.count; i++) {
+            if (i == cells.count - 1) {
+                cells[i].alpha = 0;
+                UIView.animateWithDuration(0.25 * Double(i), animations: {
+                    cells[i].alpha = 1;
+                    }, completion: {
+                        done in
+
+                });
+            } else {
+                
+                UIView.animateWithDuration(0.25 * Double(i), animations: {
+                    cells[i].alpha = 1;
+                });
+            
+            
+            }
+        }
+        
+        
+
+    }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -195,6 +338,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent;
+    }
     
 }
 
@@ -220,8 +366,15 @@ class BaseView: UIView {
     
 
 class GamesListView: UITableView {
-
     
+   
+    
+    override func updateConstraints() {
+        
+
+        
+        super.updateConstraints();
+    }
     
  
 }

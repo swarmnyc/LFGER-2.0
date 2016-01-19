@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var gameListData: [Submission] = [];
     var oldData: [([Submission], String)] = [];
+    
     override func loadView() {
         super.loadView();
         self.view = self.mainView;
@@ -81,10 +82,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getNewData() {
         SubmissionService.getGames("", platform: "", callback: {
             submissions in
+            
+            
             if (self.oldData.count == 0) {
                 
                 
                 if (self.gameListData.count == 0) {
+                    self.gameListData = submissions;
+                    self.gamesList.reloadData();
+                } else if (self.gameListData.count > submissions.count) {
                     self.gameListData = submissions;
                     self.gamesList.reloadData();
                 } else if (submissions[0].getNameAndGameJoined() != self.gameListData[0].getNameAndGameJoined()) {
@@ -92,6 +98,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     var reachedOldData = false;
                     var i = 0;
                     var starting = 0;
+                    var oldCount = self.gameListData.count;
+
                     while (reachedOldData == false) {
                         if (submissions[i].getNameAndGameJoined() != self.gameListData[starting].getNameAndGameJoined()) {
                             numberAdded++;
@@ -102,20 +110,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         i++;
-                        if (i == numberAdded) {
+                        if (i == submissions.count) {
                             reachedOldData = true;
                         }
                     }
                     
-                    self.gamesList.beginUpdates();
-                    var indexPaths: [NSIndexPath] = []
-                    for (var i = 0; i < numberAdded; i++) {
-                        indexPaths.append(NSIndexPath(forRow: i, inSection: 0));
+                    if (numberAdded > 0 || (oldCount + numberAdded == self.gameListData.count)) {
+                        self.gamesList.beginUpdates();
+                        var indexPaths: [NSIndexPath] = []
+                        for (var i = 0; i < numberAdded; i++) {
+                            indexPaths.append(NSIndexPath(forRow: i, inSection: 0));
+                        }
+                        
+                        self.gamesList.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle);
+                        
+                        self.gameListData = submissions;
+                        print(oldCount + numberAdded);
+                        print(self.gameListData);
+                        self.gamesList.endUpdates();
                     }
-                    self.gamesList.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle);
                     
-                    self.gameListData = submissions;
-                    self.gamesList.endUpdates();
+                    
                 }
             } else {
                 self.oldData[0].0 = submissions;
@@ -245,7 +260,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tv.text = self.gameListData[indexPath.row].message;
         tv.font = UIFont.systemFontOfSize(15);
         let size = tv.sizeThatFits(CGSizeMake(UIScreen.mainScreen().bounds.width - Constants.padding * 15, CGFloat.max));
-        return Constants.padding * 7 + size.height;
+        return Constants.padding * 10 + size.height;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -366,6 +381,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+        
         self.getNewData();
     }
     

@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         window!.backgroundColor = UIColor(red: 0.847, green: 0.843, blue: 0.839, alpha: 1.00);
         
+        let firstTime: String? = SavedData.getData("hasOpened");
+        if firstTime == nil {
+            let walkthrough = WalkThroughViewController();
+            SavedData.saveData("hasOpened", value: "yep");
+            window?.rootViewController?.presentViewController(walkthrough, animated: true, completion: nil);
+        }
+        
+        
         
         Fabric.with([Crashlytics.self])
 

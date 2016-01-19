@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		11642E148E60D57385AB294D /* Pods_LFGERREALUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952A721E51CF4C49C76CD0DC /* Pods_LFGERREALUITests.framework */; };
 		2C43B0601C4D47C600692FB1 /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B05F1C4D47C600692FB1 /* SavedData.swift */; };
+		2C43B0681C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B0671C4DCE8400692FB1 /* WalkThroughViewController.swift */; };
+		2C43B0691C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B0671C4DCE8400692FB1 /* WalkThroughViewController.swift */; };
+		2C43B06A1C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B0671C4DCE8400692FB1 /* WalkThroughViewController.swift */; };
 		41FA12A1346CD4BD0EA64109 /* Pods_LFGERREAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5725CD670D8CD87F58735A4 /* Pods_LFGERREAL.framework */; };
 		690957CA1C4ACAD5008A46F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690957C91C4ACAD5008A46F9 /* AppDelegate.swift */; };
 		690957CF1C4ACAD5008A46F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690957CD1C4ACAD5008A46F9 /* Main.storyboard */; };
@@ -66,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		2C43B05F1C4D47C600692FB1 /* SavedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
+		2C43B0671C4DCE8400692FB1 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
 		68CFCA71AB6CBBF2D892D11F /* Pods-LFGERREAL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LFGERREAL.release.xcconfig"; path = "Pods/Target Support Files/Pods-LFGERREAL/Pods-LFGERREAL.release.xcconfig"; sourceTree = "<group>"; };
 		690957C61C4ACAD5008A46F9 /* LFGERREAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFGERREAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		690957C91C4ACAD5008A46F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			children = (
 				690958081C4ACB3E008A46F9 /* MainViewController.swift */,
 				6909582F1C4AF6AD008A46F9 /* SettingsViewController.swift */,
+				2C43B0671C4DCE8400692FB1 /* WalkThroughViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				690958201C4ACB96008A46F9 /* ConstraintRelation.swift in Sources */,
 				6909582C1C4AE533008A46F9 /* AFDateExtension.swift in Sources */,
 				6909580D1C4ACB47008A46F9 /* Constants.swift in Sources */,
+				2C43B0681C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */,
 				6909582A1C4AD8C8008A46F9 /* SWRMError.swift in Sources */,
 				690958061C4ACB01008A46F9 /* MainView.swift in Sources */,
 				690958221C4ACB96008A46F9 /* EdgeInsets.swift in Sources */,
@@ -598,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				690957DF1C4ACAD5008A46F9 /* LFGERREALTests.swift in Sources */,
+				2C43B0691C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				690957EA1C4ACAD5008A46F9 /* LFGERREALUITests.swift in Sources */,
+				2C43B06A1C4DCE8400692FB1 /* WalkThroughViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

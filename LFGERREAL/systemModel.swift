@@ -25,6 +25,13 @@ class SystemModel {
         
     }
     
+    init (shortName: String) {
+        self.type = self.getTypeFromShortName(shortName);
+        self.title = self.getTitleText();
+
+    }
+    
+    
     init(id: String) {
         self.type = self.getTypeFromId(id);
         self.title = self.getTitleText();
@@ -55,6 +62,33 @@ class SystemModel {
         default:
             return .PC
         }
+        
+    }
+    
+    func getTypeFromShortName(shortname: String) -> System {
+        switch(shortname) {
+        case "PC":
+            return .PC;
+        case "PS4":
+            return .PS4
+        case "XB1":
+            return .XBOXONE;
+        default:
+            return .PC
+        }
+        
+    }
+    
+    func getPlatformShortName() -> String {
+        switch(self.type) {
+        case .PC:
+            return "PC";
+        case .PS4:
+            return "PS4";
+        case .XBOXONE:
+            return "XB1";
+        }
+        
         
     }
     

@@ -38,7 +38,9 @@ class Submission {
         SubmissionService.removeLFG(self.id, callback: {});
         
     }
-    
+    func getNameAndGameJoined() -> String {
+        return self.username + self.message + self.game;
+    }
     
     func sendToServer() {
         

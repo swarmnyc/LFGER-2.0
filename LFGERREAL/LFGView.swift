@@ -150,9 +150,9 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
     
     var shareStrip: SocialShareStrip = SocialShareStrip();
     
-    var namePlaceholder: String = "Username/PSN/GamerTag";
-    var gamePlaceholder: String = "Game";
-    var messagePlaceholder: String = "Let people know what's what";
+    var namePlaceholder: String = "Your Username/PSN/GamerTag";
+    var gamePlaceholder: String = "Type in the game you want to play... i.e. GTAV";
+    var messagePlaceholder: String = "Let people know what you are looking for";
     
     
     func setUpSystems(systems: [SystemModel], onChange: ((String, Int) -> ())) {
@@ -166,7 +166,7 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
         self.systemSelect = SystemSelect(systems: systems, onChange: onChange);
         self.addSubview(self.systemSelect!);
         
-        
+        self.message.scrollEnabled = false;
         
         self.gameInput.text = self.gamePlaceholder;
         self.gameInput.delegate = self;
@@ -338,6 +338,11 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
         
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder();
+        return true;
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         if (textField.text == "") {
             if (textField == self.gameInput) {
@@ -354,6 +359,8 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
         textF.endEditingView();
     }
     
+    
+    
     func textViewDidBeginEditing(textView: UITextView) {
         let textF: FancyTextView = textView as! FancyTextView;
         textF.setEditingView();
@@ -365,9 +372,13 @@ class LFGView: BaseView, UITextFieldDelegate, UITextViewDelegate {
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         print(text);
         if (textView.text.characters.count > 100 && text != "") {
+            if (text == "\n") {
+                textView.resignFirstResponder();
+            }
             return false;
         } else {
             if (text == "\n") {
+                textView.resignFirstResponder();
                 return false;
             }
             return true;

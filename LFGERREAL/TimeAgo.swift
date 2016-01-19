@@ -13,6 +13,8 @@ public func timeAgoSince(date: NSDate) -> String {
     let now = NSDate()
     let unitFlags: NSCalendarUnit = [.Second, .Minute, .Hour, .Day, .WeekOfYear, .Month, .Year]
     let components = calendar.components(unitFlags, fromDate: date, toDate: now, options: [])
+    print(components.day)
+    print(components.minute);
     
     if components.year >= 2 {
         return "\(components.year) years ago"

@@ -130,18 +130,18 @@ class GamesListCell: UITableViewCell, UITextViewDelegate {
     func setText() {
         
         self.messageView.textColor = UIColor(red: 0.922, green: 0.906, blue: 0.867, alpha: 1.00);
-        self.messageView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.320, green: 0.680, blue: 1, alpha: 1.00)]
+        self.messageView.linkTextAttributes = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
         
         
         let profileLink: String = self.systemObject!.getProfileLink(self.name);
-        let name: NSMutableAttributedString = NSMutableAttributedString(string: "#" + self.name);
+        let name: NSMutableAttributedString = NSMutableAttributedString(string: "@" + self.name);
         name.addAttribute(NSLinkAttributeName, value: profileLink.stringByReplacingOccurrencesOfString(" ", withString: "%20"), range: NSRange(location: 0, length: self.name.characters.count + 1));
         
         let game: NSMutableAttributedString = NSMutableAttributedString(string: "#" + self.game);
         game.addAttribute(NSLinkAttributeName, value: "game://" + self.game.stringByReplacingOccurrencesOfString(" ", withString: "~~~"), range: NSRange(location: 0, length: self.game.characters.count + 1));
         
         let system: NSMutableAttributedString = NSMutableAttributedString(string: "#" + self.system);
-        system.addAttribute(NSLinkAttributeName, value: "system://" + self.systemObject!.getPlatformId(), range: NSRange(location: 0, length: self.system.characters.count + 1));
+        system.addAttribute(NSLinkAttributeName, value: "system://" + self.systemObject!.getPlatformShortName(), range: NSRange(location: 0, length: self.system.characters.count + 1));
         
         let fullText: NSMutableAttributedString = NSMutableAttributedString(attributedString: name);
         

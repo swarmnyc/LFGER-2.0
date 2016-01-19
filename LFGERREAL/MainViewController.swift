@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.gamesList.dataSource = self;
         self.gamesList.delegate = self;
         self.gamesList.separatorStyle = UITableViewCellSeparatorStyle.None;
-        
+        self.gamesList.allowsSelection = false;
         self.mainView.setItUp(self.lfgView, bottomView: self.gamesList);
         self.mainView.delegate = self;
         self.lfgView.setUpSystems(systems, onChange: {
@@ -70,21 +70,67 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         });
         
         
-        SubmissionService.getGames("", platform: "", callback: {
-            submissions in
-            
-            self.gameListData += submissions;
-            self.gamesList.reloadData();
-        })
+        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNewData", userInfo: nil, repeats: true);
         
         
         self.navigationController?.navigationBarHidden = true;
         
     }
     
+    
+    func getNewData() {
+        SubmissionService.getGames("", platform: "", callback: {
+            submissions in
+            if (self.oldData.count == 0) {
+                
+                
+                if (self.gameListData.count == 0) {
+                    self.gameListData = submissions;
+                    self.gamesList.reloadData();
+                } else if (submissions[0].getNameAndGameJoined() != self.gameListData[0].getNameAndGameJoined()) {
+                    var numberAdded = 0;
+                    var reachedOldData = false;
+                    var i = 0;
+                    var starting = 0;
+                    while (reachedOldData == false) {
+                        if (submissions[i].getNameAndGameJoined() != self.gameListData[starting].getNameAndGameJoined()) {
+                            numberAdded++;
+                            self.gameListData.insert(submissions[i], atIndex: 0);
+                            starting++;
+                        } else {
+                            reachedOldData = true;
+                        }
+                        
+                        i++;
+                        if (i == numberAdded) {
+                            reachedOldData = true;
+                        }
+                    }
+                    
+                    self.gamesList.beginUpdates();
+                    var indexPaths: [NSIndexPath] = []
+                    for (var i = 0; i < numberAdded; i++) {
+                        indexPaths.append(NSIndexPath(forRow: i, inSection: 0));
+                    }
+                    self.gamesList.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Middle);
+                    
+                    self.gameListData = submissions;
+                    self.gamesList.endUpdates();
+                }
+            } else {
+                self.oldData[0].0 = submissions;
+            }
+        })
+        
+        
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.navigationBarHidden = true;
+        
+        
+        self.getNewData();
+        
 
     }
     override func viewDidAppear(animated: Bool) {
@@ -317,6 +363,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
 
+    }
+    
+    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+        self.getNewData();
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

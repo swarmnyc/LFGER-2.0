@@ -17,7 +17,7 @@ class SubmissionService {
         let parameters: [String: String] = [
         "game": submission.game,
         "message": submission.message,
-        "platform": submission.system.getPlatformId(),
+        "platform": submission.system.getPlatformShortName(),
         "gamerId": submission.username];
         
         request(.POST, "http://lfger-api.azurewebsites.net/lfgs", parameters: parameters, encoding: ParameterEncoding.JSON, headers: nil).responseJSON {
@@ -73,6 +73,28 @@ class SubmissionService {
         
     }
     
+    static func getPlatforms(callback: ([(String, String)] -> ())) {
+        
+        request(.GET, "http://lfger-api.azurewebsites.net/lfgs", parameters: nil, encoding: ParameterEncoding.URLEncodedInURL, headers: nil).responseJSON {
+            response in
+            print(response.request);
+            if let json = response.result.value {
+                print(json.count)
+                if let count = json.count {
+                    var platforms: [(String, String)] = [];
+                    for (var i = 0; i < count; i++) {
+                        let dict = json[i] as! NSDictionary;
+                        platforms.append((dict["shortName"] as! String, dict["_id"] as! String));
+                    }
+                    
+                    callback(platforms);
+                }
+            }
+        }
+        
+        
+    }
+    
     static func sendEmail(email: String) {
         if (SavedData.getData("email") == email) {
             return;
@@ -99,12 +121,19 @@ class SubmissionService {
             let username: String = json["gamerId"] as! String
             let game: String = json["game"] as! String;
             let message: String = json["message"] as! String;
-            let platformId: String = (json["platform"] as! NSDictionary)["_id"] as! String;
+            let platformShortName: String = (json["platform"] as! NSDictionary)["shortName"] as! String;
             let timeS: String = json["createdAt"] as! String;
-            let time: NSDate = NSDate(fromString: timeS, format: DateFormat.Custom("yyyy-MM-DD'T'HH:mm:ss.SSS'Z'"));
-            let system = SystemModel(id: platformId);
+            let timeStringModified: String = timeS.stringByReplacingOccurrencesOfString("T", withString: " ").stringByReplacingOccurrencesOfString("Z", withString: "");
+            var time: NSDate = NSDate(fromString: timeS, format: DateFormat.Custom("yyyy-MM-dd'T'HH:mm:SS.SSS'Z'"));
+        
+            var sourceDate = NSDate(timeIntervalSince1970: 3600 * 24 * 60);
+            var destinationTimeZone = NSTimeZone.localTimeZone();
+            var timeZoneOffset = Double(destinationTimeZone.secondsFromGMTForDate(sourceDate)) / 3600.0;
+            time = time.dateByAddingHours(Int(timeZoneOffset))
+            let rightNow: NSDate = NSDate();
+            let system = SystemModel(shortName: platformShortName);
             let id: String = json["_id"] as! String;
-        let submission = Submission(system: system, username: username, message: message, game: game, timeStamp: time, isYours: isYours, id: id);
+            let submission = Submission(system: system, username: username, message: message, game: game, timeStamp: time, isYours: isYours, id: id);
         return submission;
     }
     

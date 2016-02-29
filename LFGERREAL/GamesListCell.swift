@@ -296,6 +296,7 @@ class GamesListCell: ReportCell, UITextViewDelegate {
         self.dateLabel.textAlignment = NSTextAlignment.Right
         self.messageView.delegate = self;
         self.messageView.scrollEnabled = false;
+        
         if (self.messageView.superview == nil) {
             self.contentView.addSubview(self.messageView);
             self.contentView.addSubview(self.dateLabel);
@@ -308,9 +309,9 @@ class GamesListCell: ReportCell, UITextViewDelegate {
             self.addReportButton();
             self.bringSubviewToFront(self.contentView);
             
-            self.tapIt.addTarget(self, action: "tapRecognize:");
-            self.contentView.addGestureRecognizer(self.tapIt);
-            self.tapIt.delegate = self;
+//            self.tapIt.addTarget(self, action: "tapRecognize:");
+//            self.contentView.addGestureRecognizer(self.tapIt);
+//            self.tapIt.delegate = self;
         }
 
         self.commentIcon.setCount(submission.comments.count);
@@ -337,12 +338,17 @@ class GamesListCell: ReportCell, UITextViewDelegate {
         self.messageView.backgroundColor = UIColor.clearColor();
         self.messageView.userInteractionEnabled = true;
         if (submission.isYours) {
-            self.backgroundColor = UIColor(red: 0.663, green: 0.635, blue: 0.635, alpha: 1.00);
-            self.contentView.backgroundColor = UIColor(red: 0.663, green: 0.635, blue: 0.635, alpha: 1.00);
+            UIView.animateWithDuration(0.3, animations: {
+                self.backgroundColor = UIColor(red: 0.663, green: 0.635, blue: 0.635, alpha: 1.00);
+                self.contentView.backgroundColor = UIColor(red: 0.663, green: 0.635, blue: 0.635, alpha: 1.00);
+                
+            });
 
         } else {
+            UIView.animateWithDuration(0.3, animations: {
             self.backgroundColor = UIColor.clearColor();
             self.contentView.backgroundColor = UIColor(red: 0.529, green: 0.494, blue: 0.494, alpha: 1.00);
+            });
         }
         
         
@@ -532,6 +538,7 @@ class GamesListCell: ReportCell, UITextViewDelegate {
         super.prepareForReuse();
         self.commentIcon.callback = nil;
     }
+    
     
     
     

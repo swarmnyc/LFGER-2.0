@@ -51,7 +51,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.mainView.setTitleAttrText(self.oldData[index].1)
             self.oldData.removeAtIndex(index);
             if (self.oldData.count == 0) {
-                self.mainView.goBackLink.alpha = 0;
+                UIView.animateWithDuration(0.3, animations: {
+                    self.mainView.goBackLink.alpha = 0;    
+//                    self.mainView.goBackLink.transform = CGAffineTransformMakeTranslation(-200, 0);
+                });
             }
             callback();
             
@@ -311,7 +314,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (self.oldData.count > 0) { //remove any filters that are set
                 self.setGamesListToHistoryAtIndex(0, callback: {
                     self.oldData = [];
-                    self.mainView.goBackLink.alpha = 0;
+                    UIView.animateWithDuration(0.3, animations: {
+                        self.mainView.goBackLink.alpha = 0;
+                    });
+//                    self.mainView.goBackLink.alpha = 0;
                     finishSubmission();
                 });
             } else {
@@ -468,7 +474,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.oldData.append((self.gameListData, self.mainView.getTitleText().string, self.page, self.currentGame, self.currentPlatform));
 
         self.animateOutCells({
-            self.mainView.goBackLink.alpha = 1;
+            UIView.animateWithDuration(0.3, animations: {
+                self.mainView.goBackLink.alpha = 1;
+            });
+//            self.mainView.goBackLink.alpha = 1;
             self.commentsData = submission.comments;
             self.submissionShowingCommentFor = submission;
             self.showingComments = true;
@@ -490,9 +499,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func submitComment(var username: String, message: String) {
-        if (username == "Your Username/PSN/Gamertag") {
+        if (username == "Your Username/PSN/Gamertag" || username.stringByReplacingOccurrencesOfString(" ", withString: "") == "") {
             username = "anonymous";
         }
+        
+        if (message == self.gamesList.commenterView.messagePlaceholder || message.stringByReplacingOccurrencesOfString(" ", withString: "") == "") {
+            let _ = SWRMErrorSimple(alertTitle: "NOPE", alertText: "You need to write a message!");
+            return;
+        }
+        
         SubmissionService.sendComment(self.submissionShowingCommentFor.id, username: username, message: message, callback: {
             //do something
         });
@@ -508,7 +523,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.currentPlatform = platform;
         self.animateOutCells({
             self.page = 0;
-            self.mainView.goBackLink.alpha = 1;
+            UIView.animateWithDuration(0.3, animations: {
+                self.mainView.goBackLink.alpha = 1;
+            });
+//            self.mainView.goBackLink.alpha = 1;
             self.gameListData = submissions;
             self.gamesList.reloadData();
             self.mainView.setTitleAttrText(text);
@@ -625,6 +643,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true;
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

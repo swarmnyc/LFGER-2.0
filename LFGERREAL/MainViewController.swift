@@ -630,6 +630,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         
+        
+        if (velocity.y < 0) {
+            targetContentOffset.memory.y = 0;
+            self.mainView.onTop = true;
+        } else if (velocity.y > 0) {
+            targetContentOffset.memory.y = UIScreen.mainScreen().bounds.height
+            self.mainView.onTop = false;
+            if (self.showingComments == false) {
+                self.gamesList.hideCommenter();
+            }
+        }
+        
+        return;
+        
         if (targetContentOffset.memory.y > UIScreen.mainScreen().bounds.height / 2) {
             targetContentOffset.memory.y = UIScreen.mainScreen().bounds.height
             self.mainView.onTop = false;

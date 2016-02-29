@@ -640,9 +640,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (self.showingComments == false) {
                 self.gamesList.hideCommenter();
             }
-        }
+        } else {
         
-        return;
         
         if (targetContentOffset.memory.y > UIScreen.mainScreen().bounds.height / 2) {
             targetContentOffset.memory.y = UIScreen.mainScreen().bounds.height
@@ -655,7 +654,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.mainView.onTop = true;
         }
         
-        
+        }
         
     }
     

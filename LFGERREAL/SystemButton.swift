@@ -46,7 +46,7 @@ class SystemButton: UIButton {
     func selectButton() {
         self.backgroundColor = UIColor.clearColor();
         self.selectedImage.alpha = 1;
-        self.setEmbossedText(self.titleText, color: UIColor(red: 0.678, green: 0.165, blue: 0.090, alpha: 1.00))
+        self.setEmbossedText(self.titleText, color: Constants.redColor)
         
     }
     

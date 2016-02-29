@@ -109,6 +109,7 @@ class FancyTextView: UITextView {
     }
     
     override func updateConstraints() {
+        
         gradients.snp_remakeConstraints(closure: {
             make in
             make.top.equalTo(self).offset(-1);

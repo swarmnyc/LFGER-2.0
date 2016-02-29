@@ -29,7 +29,7 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
     var title: UILabel = UILabel();
     var resultsTop: UIImageView = UIImageView(image: UIImage(named: "resultsTop")!);
     var resultsMid: UIImageView = UIImageView(image: UIImage(named: "resultsMid")!);
-    
+    var gamesListOffset: CGFloat = 0;
 
     
     func goToSettingsFunc(callback: (() -> ())) {
@@ -40,11 +40,13 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
         self.goBack = callback;
     }
     
+   
+    
     func setItUp(topView: UIView, bottomView: UIView) {
         self.topView = topView;
         self.bottomView = bottomView;
         
-        self.backgroundColor = UIColor(red: 0.816, green: 0.812, blue: 0.808, alpha: 1.00);
+        self.backgroundColor = Constants.lightBackgroundColor;
         
         self.addSubview(self.topView);
         self.addSubview(self.resultsTop);
@@ -175,7 +177,7 @@ class MainView: UIScrollView, UIGestureRecognizerDelegate {
         
         self.bottomView.snp_remakeConstraints(closure: {
             make in
-            make.bottom.equalTo(self);
+            make.bottom.equalTo(self).offset(self.gamesListOffset);
             make.left.equalTo(self);
             make.width.equalTo(UIScreen.mainScreen().bounds.width);
             make.height.equalTo(UIScreen.mainScreen().bounds.height * 0.75);

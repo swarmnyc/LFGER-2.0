@@ -8,6 +8,28 @@
 
 import Foundation
 
+class Comment {
+    var message: String = "";
+    var username: String = "";
+    var id: String = "";
+    var timeStamp: NSDate = NSDate();
+    var lfgId: String = "";
+    
+    init(message: String, username: String, id: String, timeStamp: NSDate, lfgId: String) {
+        self.message = message;
+        self.username = username;
+        self.id = id;
+        self.timeStamp = timeStamp;
+        self.lfgId = lfgId;
+    }
+    
+    func removeIt() {
+        SubmissionService.removeComment(self.lfgId, id: self.id, callback: {});
+    }
+    
+}
+
+
 class Submission {
     var system: SystemModel = SystemModel(type: .PC);
     var username: String = "";
@@ -18,13 +40,13 @@ class Submission {
     var game: String = "";
     var isYours: Bool = false;
     var id: String = "";
-    
+    var comments: [Comment] = [];
     init() {
         
         
     }
     
-    init(system: SystemModel, username: String, message: String, game: String, timeStamp: NSDate, isYours: Bool, id: String) {
+    init(system: SystemModel, username: String, message: String, game: String, timeStamp: NSDate, isYours: Bool, id: String, comments: [Comment]) {
         self.system = system;
         self.username = username;
         self.message = message;
@@ -32,6 +54,10 @@ class Submission {
         self.timeStamp = timeStamp;
         self.isYours = isYours;
         self.id = id;
+        self.comments = comments;
+        
+        self.comments.insert(Comment(message: self.message, username: self.username, id: "", timeStamp: self.timeStamp, lfgId: self.id), atIndex: 0);
+        
     }
     
     func removeIt() {
